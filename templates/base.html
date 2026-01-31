@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Mailová aplikace{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <header>
+    <h1>Šachy družstva administrátorský panel</h1>
+  <nav class="navbar">
+    <ul class="navbar-menu">
+      <li><a href="{{ url_for('index') }}"">Domů</a></li>
+      <li><a href="{{ url_for('current_team') }}"">Soupiska</a></li>
+      <li><a href="{{ url_for('mails_to_check') }}"">E-maily</a></li>
+      <li><a href="{{ url_for('manual_page') }}"">Ruční zadávání</a></li>
+  </ul>
+</nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; Šachový klub Smíchov 2025</p>
+  </footer>
+</body>
+
+</html>

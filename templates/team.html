@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Soupiska na další utkání{% endblock %}
+
+{% block content %}
+
+<form method="post" action="{{ url_for('generate_team') }}">
+  <button type="submit" class="menu-btn">
+    Aktualizovat soupisku
+  </button>
+</form>
+
+<h1>Soupiska</h1>
+
+{% for player in team %}
+<div class="mail">
+  <strong>{{ player.from_name }}</strong><br>
+  <br– <p>{{ player.auto_result }}</p>
+
+</div>
+{% else %}
+<p>Žádná data</p>
+{% endfor %}
+
+{% endblock %}

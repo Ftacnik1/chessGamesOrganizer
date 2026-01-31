@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Maily{% endblock %}
+
+{% block content %} 
+
+<form method="post" action="{{ url_for('import_now') }}">
+    <button type="submit" class="menu-btn">
+        📥 Načíst nové maily
+    </button>
+</form>
+
+  <h1>Zpracované zprávy</h1>
+
+  {% for mail in emails %}
+  <div class="mail">
+    <strong>{{ mail.from_name }}</strong>
+    ({{ mail.from_email }})<br>
+
+    <em>{{ mail.subject }}</em><br><br>
+
+    <p>{{ mail.body }}</p>
+
+    {{ mail.auto_result }}<br><br>
+
+     <form method="post" action="{{ url_for('process_mail', email_id=mail.id) }}">
+        <button type="submit" name="action" value="ANO" class="btn-ano">ANO</button>
+        <button type="submit" name="action" value="NE" class="btn-ne">NE</button>
+        <button type="submit" name="action" value="NECHCI" class="btn-nechci">NECHCI</button>
+        <button type="submit" name="action" value="potvrdit" class="btn-potvrdit">✔ Potvrdit automat</button>
+    </form>
+  </div>
+  {% else %}
+  <p>Žádná data</p>
+  {% endfor %}
+
+{% endblock %}
+

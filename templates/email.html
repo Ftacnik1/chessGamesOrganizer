@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Zpráva{% endblock %}
+
+{% block content %}
+
+
+<h1>Odeslat všem hráčům e-mail</h1>
+
+<form method="post" action="/send-broadcast">
+  <label>Napiš zprávu:</label><br>
+  <textarea name="message" rows="10" style="width:100%"></textarea><br><br>
+  <button type="submit" class="menu-btn">Odeslat všem</button>
+</form>
+{% endblock %}

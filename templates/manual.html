@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Administrátor{% endblock %}
+
+{% block content %}
+
+
+<h1>Seznam hráčů</h1>
+
+{% for player in candidates %}
+<div class="mail">
+  <strong>{{player.from_name}}</strong>
+  <br>
+<br>
+<p><em>Změnit docházku pro příští utkání</em></p>
+
+  <form method="post" action="{{ url_for('adding_manual') }}">
+  <input type="hidden" name="from_name" value='{{player.from_name}}'>
+    <button type="submit" name="decision" value="ANO" class="btn-ano">ANO</button>
+    <button type="submit" name="decision" value="NE" class="btn-ne">NE</button>
+    <button type="submit" name="decision" value="NECHCI" class="btn-nechci">NECHCI</button>
+  </form>
+</div>
+{% else %}
+<p>Žádná data</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+players.json
+data.db
+days.txt
+__pycache__/
+*.py[cod]
+venv/
+.env
+log_day.txt
+log_day_two.txt

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Hlavní stránka{% endblock %}
+
+{% block content %}
+
+
+<section class="intro-section">
+    <div class="intro-text">
+
+<h2>Hlavní panel</h2>
+<p>Dobrý den vítejte na hlavní stránce automatického čtení emailů. Stránka pracuje s databází
+obshující všechny emaily a automaticky generuje soupisku</p>
+<H2>Nástroje</h2>
+<p>Tato stránka automaticky vyhodnocuje přichozí e-maily a generuje soupisku hráčů. Zároveň drží hamrnongoram soutěže
+a automaticky posílá e-maily účastníkům. Zprávy, které nezkontroloval člověk jsou dostupné mezi nástroji pod tlačítkem <em>Zobrazit nezkontrolované maily</em>
+Veškeré zprávy jsou na tomto webu taky dostupné. Pro menší zatížení serveru je pro generování aktuální sopuisky a načtení nových mailů nutné vždy stisknou tlačítko <i>(Děkujeme za pochopení)</i>.
+Vyhodnocení zpráv probíhá vždy okamžitě po jejich načtení. Brána v potaz poslední zpráva daného hráče.
+</p>
+
+    </div>
+
+    <div class="info-cards">
+        <div class="card">
+            <span class="card-label">Termín dalšího kola</span>
+            <span class="card-value">{{when}}</span>
+        </div>
+        <div class="card">
+            <span class="card-label">Začátek kola</span>
+            <span class="card-value">{{exact_time}}</span>
+        </div>
+
+
+        <div class="card">
+            <span class="card-label">Domácí</span>
+            <span class="card-value">{{first}}</span>
+        </div>
+
+        <div class="card">
+            <span class="card-label">Hosté</span>
+            <span class="card-value">{{second}}</span>
+        </div>
+        <div class="card">
+            <span class="card-label">Počet e-mailů ke zpracování</span>
+            <span class="card-value">{{num_to_check}}</span>
+        </div>
+
+        <div class="card-wide">
+            <span class="card-label">Hrací místnost</span>
+            <span class="card-value">{{where}}</span>
+        </div>
+
+    </div>
+</section>
+<section>
+<H2>Nástroje pro zprávu e-mailů</HW>
+<H3>Automatická kontrola</H3>
+    <form method="get" action="{{ url_for('mails_to_check') }}">
+        <button type="submit" class="menu-btn">Zobrazit nezkontrolované maily</button>
+    </form>
+    <form method="get" action="{{ url_for('all_mails') }}">
+        <button type="submit" class="menu-btn">Zobrazit všechny maily</button>
+    </form>
+<H3>Soupiska</H3>
+    <form method="get" action="{{ url_for('current_team') }}">
+        <button type="submit" class="menu-btn">Zobrazit aktuální soupisku</button>
+    </form>
+    <form method="get" action="{{ url_for('manual_page') }}">
+        <button type="submit" class="menu-btn">Upravit docházku manuálně</button>
+    </form>
+<H3>Zprávy</H3>
+<form method="get" action="{{ url_for('write_email_page') }}">
+        <button type="submit" class="menu-btn">Poslat zprávu</button>
+    </form>
+
+
+
+</section>
+
+
+
+{% endblock %}
